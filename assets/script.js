@@ -9,18 +9,9 @@ var currentHumidity = document.querySelector("#current-humidity");
 // API key
 var apiKey = "f99598aacae7785a52e71cedad2a806e";
 // City variable
-var city = "chicago";
-// Requested URL variable
-var requestUrl =
-  "https://api.openweathermap.org/data/2.5/weather?q=" +
-  city +
-  "&appid=" +
-  apiKey +
-  "&units=imperial";
-// function searchCity() {
-//   var urlCurrentDay =
-//     "https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}";
-// }
+var city;
+
+// Fetch the API and apply to page
 function getApi(requestUrl) {
   fetch(requestUrl)
     .then(function (response) {
@@ -40,5 +31,17 @@ function getApi(requestUrl) {
       console.error("There was a problem with the fetch operation:", error);
     });
 }
-
-getApi(requestUrl);
+// Search button fetches data for desired city
+function showCity() {
+  var cityInput = document.querySelector("#city-input");
+  var city = cityInput.value;
+  window.city = city;
+  // Requested URL variable
+  var requestUrl =
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
+    city +
+    "&appid=" +
+    apiKey +
+    "&units=imperial";
+  getApi(requestUrl);
+}
