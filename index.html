@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+    <header id="heading">
+        <h1>Weather Dashboard</h1>
+    </header>
+    <section id="city-search-container">
+        <h2>Search for a city:</h2>
+        <input id="city-input">
+        <button class="btn city-search" onClick="searchCity()">Search</button>
+        <ul id="stored-cities">
+
+        </ul>
+    </section>
+    <section id="weather-display">
+        <div id="city-current-weather">
+            <h2 id="city-name">City Name</h2>
+            <p id="temp">Temp</p>
+            <p id="wind">Wind</p>
+            <p id="humidity">Humidity</p>
+        </div>
+        <div id="five-day-forecast">
+            <h3>5-Day Forecast:</h3>
+            <div class="daily-container" id="day1">
+                <h4 id="date1">Date1</h4>
+                <p id="temp1">Temp1</p>
+                <p id="wind1">Wind1</p>
+                <p id="humidity1">Humidity1</p>
+            </div>
+            <div class="daily-container" id="day2">
+                <h4 id="date2">Date2</h4>
+                <p id="temp2">Temp2</p>
+                <p id="wind2">Wind2</p>
+                <p id="humidity2">Humidity2</p>
+            </div>
+            <div class="daily-container" id="day3">
+                <h4 id="date3">Date3</h4>
+                <p id="temp3">Temp3</p>
+                <p id="wind3">Wind3</p>
+                <p id="humidity3">Humidity3</p>
+            </div>
+            <div class="daily-container" id="day4">
+                <h4 id="date4">Date4</h4>
+                <p id="temp4">Temp4</p>
+                <p id="wind4">Wind4</p>
+                <p id="humidity4">Humidity4</p>
+            </div>
+            <div class="daily-container" id="day5">
+                <h4 id="date5">Date5</h4>
+                <p id="temp5">Temp5</p>
+                <p id="wind5">Wind5</p>
+                <p id="humidity5">Humidity5</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+<script src="./assets/script.js"></script>
+</html>

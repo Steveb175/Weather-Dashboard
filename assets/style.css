@@ -1,0 +1,35 @@
+#heading {
+    color:white;
+    text-align: center;
+    background-color: rgb(86, 112, 185);
+    width: 100%;
+}
+
+#city-search-container {
+    height: 100px;
+    text-align: center;
+    border: black 1px solid;
+    border-radius: 5px;
+}
+
+#city-current-weather {
+    border: black 1px solid;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+
+#five-day-forecast {
+    border: black 1px solid;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.daily-container {
+    margin-left: 20px;
+    border: black 1px solid;
+    padding-right: 50px;
+}
