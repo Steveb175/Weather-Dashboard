@@ -24,8 +24,8 @@ function getApiToday(requestUrlToday) {
     .then(function (data) {
       currentCityName.textContent = data.name;
       currentTemp.textContent = "Temp: " + data.main.temp + "°F";
-      currentWind.textContent = "Wind: " + data.wind.speed;
-      currentHumidity.textContent = "Humidity: " + data.main.humidity;
+      currentWind.textContent = "Wind: " + data.wind.speed + "mph";
+      currentHumidity.textContent = "Humidity: " + data.main.humidity + "%";
       console.log(data);
     })
     .catch(function (error) {
@@ -48,6 +48,8 @@ function getApiForecast(requestUrlForecast) {
       var temp;
       var wind;
       var humidity;
+      // log the data
+      console.log(data);
       for (let i = 1; i < 6; i++) {
         // Identifying the ids + i
         var date = document.querySelector("#date" + i);
@@ -59,9 +61,8 @@ function getApiForecast(requestUrlForecast) {
         // Set text content of each id + i
         date.textContent = dateDay.format("dddd");
         temp.textContent = "Temp: " + data.list[i].main.temp + "°F";
-        wind.textContent = "Wind: " + data.list[i].wind.speed;
-        humidity.textContent = "Humidity: " + data.list[i].main.humidity;
-        console.log(data);
+        wind.textContent = "Wind: " + data.list[i].wind.speed + "mph";
+        humidity.textContent = "Humidity: " + data.list[i].main.humidity + "%";
       }
     })
     .catch(function (error) {
@@ -71,13 +72,50 @@ function getApiForecast(requestUrlForecast) {
       );
     });
 }
+// Function to show the weather display
+function showDisplay() {
+  windowDisplay.classList.remove("hide");
+}
+
+// Create new city button function
+function newCityListItem(city) {
+  // Create new button
+  var storedCities = document.querySelector("#stored-cities");
+  var newCity = document.createElement("button");
+  storedCities.appendChild(newCity);
+  newCity.textContent = city.toUpperCase();
+  // Event listener added to new button
+  newCity.addEventListener("click", function () {
+    localStorage.setItem("cityName", city);
+    // Requested URL variable
+    var requestUrlToday =
+      "https://api.openweathermap.org/data/2.5/weather?q=" +
+      city +
+      "&appid=" +
+      apiKey +
+      "&units=imperial";
+    var requestUrlForecast =
+      "https://api.openweathermap.org/data/2.5/forecast?q=" +
+      city +
+      "&exclude=hourly" +
+      "&appid=" +
+      apiKey +
+      "&units=imperial";
+    getApiToday(requestUrlToday);
+    getApiForecast(requestUrlForecast);
+  });
+}
 
 // Search button fetches data for desired city
 function showCity() {
-  windowDisplay.classList.remove("hide");
   var cityInput = document.querySelector("#city-input");
   var city = cityInput.value;
   window.city = city;
+  var cityName = localStorage.setItem("cityName", city);
+  window.city = cityName;
+  setTimeout(function () {
+    newCityListItem(city);
+  }, 500);
   // Requested URL variable
   var requestUrlToday =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -88,10 +126,11 @@ function showCity() {
   var requestUrlForecast =
     "https://api.openweathermap.org/data/2.5/forecast?q=" +
     city +
-    "&cnt=6" +
+    "&exclude=hourly" +
     "&appid=" +
     apiKey +
     "&units=imperial";
   getApiToday(requestUrlToday);
   getApiForecast(requestUrlForecast);
+  setTimeout(showDisplay, 500);
 }

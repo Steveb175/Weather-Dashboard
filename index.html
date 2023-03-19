@@ -11,58 +11,62 @@
     <header id="heading">
         <h1>Weather Dashboard</h1>
     </header>
+<!-- City Search -->
     <section id="city-search-container">
         <h2>Search for a city:</h2>
         <input id="city-input">
         <button class="btn city-search" onClick="showCity()">Search</button>
     
-        <ul id="stored-cities">
-
-        </ul>
+        <div id="stored-cities">
+        </div>
     </section>
+
+<!--Current weather section-->
     <section id="weather-display" class="hide">
         <div id="current-city-weather">
-            <h2 id="current-city-name">City Name</h2>
-            <p id="current-temp">Temp</p>
-            <p id="current-wind">Wind</p>
-            <p id="current-humidity">Humidity</p>
+            <h2 id="current-city-name"></h2>
+            <p id="current-temp"></p>
+            <p id="current-wind"></p>
+            <p id="current-humidity"></p>
         </div>
+<!--Five day forecast section-->
         <div id="five-day-forecast">
             <h3>5-Day Forecast:</h3>
             <div class="daily-container" id="day1">
-                <h4 id="date1">Date1</h4>
-                <p id="temp1">Temp1</p>
-                <p id="wind1">Wind1</p>
-                <p id="humidity1">Humidity1</p>
+                <h4 id="date1"></h4>
+                <p id="temp1"></p>
+                <p id="wind1"></p>
+                <p id="humidity1"></p>
             </div>
             <div class="daily-container" id="day2">
-                <h4 id="date2">Date2</h4>
-                <p id="temp2">Temp2</p>
-                <p id="wind2">Wind2</p>
-                <p id="humidity2">Humidity2</p>
+                <h4 id="date2"></h4>
+                <p id="temp2"></p>
+                <p id="wind2"></p>
+                <p id="humidity2"></p>
             </div>
             <div class="daily-container" id="day3">
-                <h4 id="date3">Date3</h4>
-                <p id="temp3">Temp3</p>
-                <p id="wind3">Wind3</p>
-                <p id="humidity3">Humidity3</p>
+                <h4 id="date3"></h4>
+                <p id="temp3"></p>
+                <p id="wind3"></p>
+                <p id="humidity3"></p>
             </div>
             <div class="daily-container" id="day4">
-                <h4 id="date4">Date4</h4>
-                <p id="temp4">Temp4</p>
-                <p id="wind4">Wind4</p>
-                <p id="humidity4">Humidity4</p>
+                <h4 id="date4"></h4>
+                <p id="temp4"></p>
+                <p id="wind4"></p>
+                <p id="humidity4"></p>
             </div>
             <div class="daily-container" id="day5">
-                <h4 id="date5">Date5</h4>
-                <p id="temp5">Temp5</p>
-                <p id="wind5">Wind5</p>
-                <p id="humidity5">Humidity5</p>
+                <h4 id="date5"></h4>
+                <p id="temp5"></p>
+                <p id="wind5"></p>
+                <p id="humidity5"></p>
             </div>
         </div>
     </section>
 
 </body>
+<!--dayjs link-->
 <script
 src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
 integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
