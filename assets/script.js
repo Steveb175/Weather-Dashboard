@@ -1,10 +1,5 @@
 // Global variables for current weather
 var searchButton = document.querySelector(".city-search");
-var currentCityWeather = document.querySelector("#current-city-weather");
-var currentCityName = document.querySelector("#current-city-name");
-var currentTemp = document.querySelector("#current-temp");
-var currentWind = document.querySelector("#current-wind");
-var currentHumidity = document.querySelector("#current-humidity");
 var windowDisplay = document.querySelector("#weather-display");
 
 // API key
@@ -22,11 +17,23 @@ function getApiToday(requestUrlToday) {
       return response.json();
     })
     .then(function (data) {
+      // Declared variables for the function
+      var currentCityWeather = document.querySelector("#current-city-weather");
+      var currentWeatherIcon = document.querySelector("#current-icon");
+      var currentCityName = document.querySelector("#current-city-name");
+      var currentTemp = document.querySelector("#current-temp");
+      var currentIcon = document.querySelector("#current-icon");
+      var currentWind = document.querySelector("#current-wind");
+      var currentHumidity = document.querySelector("#current-humidity");
+      //inserting data into the declared variables
       currentCityName.textContent = data.name;
       currentTemp.textContent = "Temp: " + data.main.temp + "°F";
       currentWind.textContent = "Wind: " + data.wind.speed + "mph";
       currentHumidity.textContent = "Humidity: " + data.main.humidity + "%";
-      console.log(data);
+      // pulls icon id from fetched data and combines it with params to get desired image
+      var iconUrl =
+        "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
+      currentWeatherIcon.setAttribute("src", iconUrl);
     })
     .catch(function (error) {
       console.error("There was a problem with the fetch operation:", error);
@@ -43,19 +50,26 @@ function getApiForecast(requestUrlForecast) {
       return response.json();
     })
     .then(function (data) {
-      // Set initial variables
+      // Declared variables for the function
+      var weatherIcon;
       var date;
       var temp;
       var wind;
       var humidity;
       // log the data
       console.log(data);
-      for (let i = 1; i < 6; i++) {
+      for (let i = 0; i < 40; i += 8) {
         // Identifying the ids + i
-        var date = document.querySelector("#date" + i);
-        var temp = document.querySelector("#temp" + i);
-        var wind = document.querySelector("#wind" + i);
-        var humidity = document.querySelector("#humidity" + i);
+        weatherIcon = document.querySelector("#icon" + (i / 8 + 1));
+        date = document.querySelector("#date" + (i / 8 + 1));
+        temp = document.querySelector("#temp" + (i / 8 + 1));
+        wind = document.querySelector("#wind" + (i / 8 + 1));
+        humidity = document.querySelector("#humidity" + (i / 8 + 1));
+        // Icon URL
+        var iconUrl =
+          "https://openweathermap.org/img/wn/" +
+          data.list[i].weather[0].icon +
+          ".png";
         // Convert Unix timestamp to JavaScript Date object using dayjs
         var dateDay = dayjs.unix(data.list[i].dt);
         // Set text content of each id + i
@@ -63,6 +77,8 @@ function getApiForecast(requestUrlForecast) {
         temp.textContent = "Temp: " + data.list[i].main.temp + "°F";
         wind.textContent = "Wind: " + data.list[i].wind.speed + "mph";
         humidity.textContent = "Humidity: " + data.list[i].main.humidity + "%";
+        // pulls icon id from fetched data and combines it with params to get desired image
+        weatherIcon.setAttribute("src", iconUrl);
       }
     })
     .catch(function (error) {
@@ -72,6 +88,7 @@ function getApiForecast(requestUrlForecast) {
       );
     });
 }
+
 // Function to show the weather display
 function showDisplay() {
   windowDisplay.classList.remove("hide");
@@ -97,7 +114,7 @@ function newCityListItem(city) {
     var requestUrlForecast =
       "https://api.openweathermap.org/data/2.5/forecast?q=" +
       city +
-      "&exclude=hourly" +
+      "&exclude=current,minutely,hourly,alerts" +
       "&appid=" +
       apiKey +
       "&units=imperial";
