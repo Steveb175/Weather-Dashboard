@@ -36,6 +36,7 @@ html {
     color:white;
     margin-right: 5px;
     margin-top: 15px;
+    padding-top: 2px
     
 }
 #stored-cities button:hover {
@@ -51,10 +52,10 @@ html {
 #five-day-forecast {
     border: black 1px solid;
     border-radius: 5px;
-    margin-top: 20px;
-    max-width: max-content;
+    margin: 20px auto 0 auto;
+    max-width: 850px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding-top: 5px;
     padding-bottom: 5px;
     background-color: rgb(86, 112, 185);
