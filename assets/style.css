@@ -1,3 +1,7 @@
+html {
+    background-color: grey;
+}
+
 /*Heading*/
 #heading {
     color:white;
@@ -6,6 +10,16 @@
     width: 100%;
 }
 /*City search*/
+#current-city-name {
+    border: 1px black solid;
+    border-radius: 5px;
+    width: fit-content;
+    text-align: center;
+    margin: 0 auto;
+    padding: 2px;
+    background-color: rgb(86, 112, 185);
+}
+
 #city-search-container {
     height: 100px;
     text-align: center;
@@ -22,7 +36,6 @@
     color:white;
     margin-right: 5px;
     margin-top: 15px;
-    padding: 1px;
     
 }
 #stored-cities button:hover {
@@ -30,10 +43,9 @@
 }
 
 /*Current weather*/
-#city-current-weather {
-    border: black 1px solid;
-    border-radius: 5px;
+#current-city-weather {
     margin-top: 20px;
+    text-align: center;
 }
 /*5 day forecast container*/
 #five-day-forecast {
@@ -61,7 +73,7 @@ h3 {
     border-radius: 5px;
     padding-right: 5px;
     padding-left: 5px;
-    background-color: white;
+    background-color: rgb(184, 181, 181);
     
 }
 
