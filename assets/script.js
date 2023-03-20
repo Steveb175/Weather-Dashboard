@@ -73,7 +73,7 @@ function getApiForecast(requestUrlForecast) {
         // Convert Unix timestamp to JavaScript Date object using dayjs
         var dateDay = dayjs.unix(data.list[i].dt);
         // Set text content of each id + i
-        date.textContent = dateDay.format("dddd");
+        date.textContent = dateDay.format("ddd, MM D, YYYY");
         temp.textContent = "Temp: " + data.list[i].main.temp + "°F";
         wind.textContent = "Wind: " + data.list[i].wind.speed + "mph";
         humidity.textContent = "Humidity: " + data.list[i].main.humidity + "%";
